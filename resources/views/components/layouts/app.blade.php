@@ -21,8 +21,8 @@
                 <div>
                     <div class="flex items-center gap-2">
                         <livewire:logo />
-                        <span class="font-bold text-3xl me-3 bg-gradient-to-r from-black to-gray-200 bg-clip-text text-transparent ">
-                            FV 2
+                        <span class="font-bold text-3xl me-3 bg-gradient-to-r from-amber-800 to-yellow-500 bg-clip-text text-transparent ">
+                            Prime Views
                         </span>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
 
     {{-- Right side actions --}}
     <x-slot:actions>
-        <x-button label="Messages" icon="m-information-circle" link="{{route('profile.about', $apartment->uuid)}}" class="btn-ghost btn-sm" responsive />
+        <x-button label="Messages" icon="m-information-circle" link="{{route('profile.about', $apartment->uuid)}}" class="btn-ghost text-amber-800 btn-sm" responsive />
     </x-slot:actions>
 </x-nav>
 

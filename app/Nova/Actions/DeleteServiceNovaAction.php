@@ -27,7 +27,7 @@ class DeleteServiceNovaAction extends DestructiveAction
         try {
             if(!$service->is_paid) {
                 $apartment = $service->apartment;
-                $apartment->balance -= $service->amount;
+                $apartment->balance_usd -= $service->amount;
                 $apartment->save();
             }
             $service->delete();

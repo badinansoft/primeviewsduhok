@@ -21,25 +21,10 @@ class CreateServiceForAllApartment
 
     public function run(): void
     {
-        $levels = [];
-
-        if ($this->data->type['type1']) {
-            $levels[] = 14;
-        }
-        if ($this->data->type['type2']) {
-            $levels = [...$levels, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 23, 24, 25];
-        }
-
-        if ($this->data->type['type3']) {
-            $levels[] = 22;
-        }
-
-        info(json_encode($levels));
-
 
         $apartments = Apartment::query()
                                 ->where('tower_id', $this->data->towerId)
-                                ->whereIn('level_id', $levels)
+                                ->whereIn('area', $this->data->area)
                                 ->get();
 
 

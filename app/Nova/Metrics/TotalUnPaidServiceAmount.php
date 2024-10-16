@@ -18,7 +18,7 @@ class TotalUnPaidServiceAmount extends Value
     public function calculate(NovaRequest $request): ValueResult
     {
         return $this->sum($request, Service::query()->whereNull('paid_at'), 'amount')
-                    ->prefix(' IQD ')
+                    ->prefix(' $ ')
                     ->format([
                         'thousandSeparated' => true,
                         'mantissa' => 0,

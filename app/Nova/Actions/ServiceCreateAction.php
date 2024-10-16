@@ -4,6 +4,7 @@ namespace App\Nova\Actions;
 
 use App\Data\ServiceDataBulkCreating;
 use App\Jobs\CreateBulkServiceInBackgroundJob;
+use App\Models\Apartment;
 use App\Models\Tower;
 use App\Settings\Settings;
 use Carbon\Carbon;
@@ -30,7 +31,7 @@ class ServiceCreateAction extends DetachedAction
     {
         $data = new ServiceDataBulkCreating(
             $fields->tower_id,
-            $fields->type,
+            $fields->area,
             Carbon::parse($fields->start_date),
             Carbon::parse($fields->end_date),
             $fields->amount,
@@ -46,6 +47,12 @@ class ServiceCreateAction extends DetachedAction
     public function fields(NovaRequest $request): array
     {
         $towers = Tower::query()->pluck('name', 'id')->all();
+        $area = Apartment::query()
+            ->select("area")
+            ->groupBy("area")
+            ->get()
+            ->pluck("area", "area")
+            ->toArray();
         $settings = app(Settings::class);
         return [
 
@@ -54,11 +61,7 @@ class ServiceCreateAction extends DetachedAction
                 ->searchable()
                 ->rules('required'),
 
-            BooleanGroup::make(__('Type'), 'type')->options([
-                'type1' => 'Level 0',
-                'type2' => 'Normal',
-                'type3' => 'Top Level',
-            ]),
+            BooleanGroup::make(__('Area'), 'area')->options($area),
 
             Date::make(__('Start Date'), 'start_date')
                 ->rules('required'),

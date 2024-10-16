@@ -19,7 +19,7 @@ class MonthlyUnPaidServiceAmount extends Trend
     {
         return $this->sumByMonths($request, Service::query()->whereNull('paid_at'), 'amount', 'created_at')
             ->showSumValue()
-            ->prefix(' IQD ')
+            ->prefix(' $ ')
             ->format([
                 'thousandSeparated' => true,
                 'mantissa' => 0,

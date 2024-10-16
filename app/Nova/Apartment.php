@@ -73,11 +73,23 @@ class Apartment extends Resource
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
 
+            Currency::make(__('Balance USD'), 'balance_usd')
+                ->currency('USD')
+                ->context(new \Brick\Money\Context\CustomContext(0))
+                ->sortable()
+                ->showWhenPeeking()
+                ->hideWhenCreating()
+                ->hideWhenUpdating(),
+
             Number::make(__('Last Unit'), 'gas_unit')
                 ->sortable()
                 ->showWhenPeeking()
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
+
+            Number::make(__('Area'), 'area')
+                ->sortable()
+                ->showWhenPeeking(),
 
             BelongsTo::make(__('Tower'), 'tower', Tower::class)
                 ->filterable()

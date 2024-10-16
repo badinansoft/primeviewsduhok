@@ -67,6 +67,7 @@ class Service extends Resource
                 ->sortable(),
 
             Currency::make(__('Amount'), 'amount')
+                ->currency('USD')
                 ->filterable()
                 ->sortable(),
 

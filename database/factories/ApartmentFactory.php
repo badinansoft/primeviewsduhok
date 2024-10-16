@@ -21,6 +21,7 @@ class ApartmentFactory extends Factory
             'view' => $this->faker->randomElement(ApartmentView::toArray()),
             'is_rent' => $this->faker->boolean(),
             'rent_customer_id' => $this->faker->boolean() ? CustomerFactory::new() : null,
+            'area' => $this->faker->numberBetween(100, 200),
         ];
     }
 }

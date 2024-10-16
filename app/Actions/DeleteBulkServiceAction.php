@@ -20,7 +20,7 @@ class DeleteBulkServiceAction
         foreach ($services as $service) {
             $apartment = $service->apartment;
             if(!$service->is_paid) {
-                $apartment->balance -= $service->amount;
+                $apartment->balance_usd -= $service->amount;
             }
             $apartment->save();
             $service->delete();

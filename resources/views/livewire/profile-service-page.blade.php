@@ -1,10 +1,10 @@
 <div>
     <h2 class="text-2xl font-bold">
-        <x-button icon="o-arrow-right" class="btn-circle btn-outline ml-5" :link="route('profile.show', $apartment->uuid)" />
+        <x-button icon="o-arrow-right" class="btn-circle btn-outline ml-5 bg-amber-800 text-white" :link="route('profile.show', $apartment->uuid)" />
 
-        <b>خدمات</b>
+        <b class="text-amber-800">خدمات</b>
     </h2>
-    <h4 class="pb-3 border-b-2"> مرحبا سيد <b> {{ $apartment->is_rent ? $apartment->rentCustomer->name : $apartment->customer->name  }} </b>  </h4>
+    <h4 class="pb-3 border-b-2 text-amber-800"> مرحبا سيد <b> {{ $apartment->is_rent ? $apartment->rentCustomer->name : $apartment->customer->name  }} </b>  </h4>
     <div class="mt-5">
 
         @foreach($apartment->services->sortBy('date')->all() as $service)
@@ -17,7 +17,7 @@
                     @endif
                 </x-slot:avatar>
                 <x-slot:value>
-                    {{ number_format($service->amount) }} <b class="text-red-600"> د.ع   </b>
+                    {{ number_format($service->amount) }} <b class="text-red-600"> $   </b>
                 </x-slot:value>
                 <x-slot:sub-value>
                     {{ $service->end_date->locale('ar')->diffForHumans() }}
@@ -27,7 +27,7 @@
                     @endif
                 </x-slot:sub-value>
                 <x-slot:actions>
-                    <x-button icon="s-document-currency-dollar" external class="text-blue-500" spinner :link="route('profile.invoice.service', ['uuid'=>$apartment->uuid, 'id'=>$service->id])" />
+                    <x-button icon="s-document-currency-dollar" external class="text-amber-700" spinner :link="route('profile.invoice.service', ['uuid'=>$apartment->uuid, 'id'=>$service->id])" />
                 </x-slot:actions>
             </x-list-item>
         @endforeach

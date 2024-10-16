@@ -9,7 +9,7 @@ class ServiceDataBulkCreating extends Data
 {
     public function __construct(
         public int $towerId,
-        public array $type,
+        public array $area,
         public Carbon $startDate,
         public Carbon $endDate,
         public float $amount,

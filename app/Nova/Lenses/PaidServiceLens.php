@@ -64,6 +64,7 @@ class PaidServiceLens extends Lens
                 ->sortable(),
 
             Currency::make(__('Amount'), 'amount')
+                ->currency('USD')
                 ->filterable()
                 ->sortable(),
 

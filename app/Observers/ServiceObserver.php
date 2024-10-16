@@ -21,7 +21,7 @@ class ServiceObserver
 
     public function created(Service $service): void
     {
-        $service->apartment->balance += $service->amount;
+        $service->apartment->balance_usd += $service->amount;
         $service->apartment->save();
     }
 }

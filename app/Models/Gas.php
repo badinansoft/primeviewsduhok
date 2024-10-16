@@ -63,6 +63,7 @@ class Gas extends Model
             'unit_price' => 'integer',
             'date' => 'date',
             'paid_at' => 'datetime',
+            'total_before_discount' => 'integer',
         ];
     }
 

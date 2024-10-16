@@ -23,6 +23,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property ?int $rent_customer_id
  * @property float $gas_unit
  * @property bool $status
+ * @property int $area
+ * @property int $balance_usd
+ *
  */
 #[ObservedBy(ApartmentObserver::class)]
 class Apartment extends Model
@@ -41,6 +44,8 @@ class Apartment extends Model
         'gas_unit',
         'rent_customer_id',
         'status',
+        'area',
+        'balance_usd',
     ];
 
     protected function casts(): array
@@ -55,6 +60,7 @@ class Apartment extends Model
             'view' => ApartmentView::class,
             'balance' => 'integer',
             'status' => 'boolean',
+            'balance_usd' => 'integer',
         ];
     }
 

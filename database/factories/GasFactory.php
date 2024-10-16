@@ -27,6 +27,7 @@ class GasFactory extends Factory
             'date' => $this->faker->date(),
             'paid_at' => $this->faker->numberBetween(0,1) === 0 ? null : $this->faker->dateTimeBetween('-1 year', 'now'),
             'notes' => $this->faker->text,
+            'current_unit' => $apartment->gas_unit + $gazConsumption,
             'created_by' => 1,
         ];
     }

@@ -20,7 +20,7 @@ class PayServiceAction
             $service->paid_by = auth()->id();
             $service->save();
 
-            $service->apartment->balance -= $service->amount;
+            $service->apartment->balance_usd -= $service->amount;
             $service->apartment->save();
 
             DB::commit();

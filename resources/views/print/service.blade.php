@@ -177,7 +177,7 @@
             @endif
             <tr>
                 <th> كلفة خدمات لتاريخ محدد </th>
-                <td> IQD {{ number_format($service->amount, 0) }} </td>
+                <td> $ {{ number_format($service->amount, 0) }} </td>
             </tr>
 
             <tr>

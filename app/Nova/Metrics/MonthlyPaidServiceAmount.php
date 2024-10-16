@@ -19,7 +19,7 @@ class MonthlyPaidServiceAmount extends Trend
     {
         return $this->sumByMonths($request, Service::class, 'amount', 'paid_at')
                     ->showSumValue()
-                    ->prefix('IQD')
+                    ->prefix('$')
                     ->format([
                         'thousandSeparated' => true,
                         'mantissa' => 0,

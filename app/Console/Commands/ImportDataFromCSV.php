@@ -20,7 +20,7 @@ class ImportDataFromCSV extends Command
     public function handle(): void
     {
         // read file information.csv from storage/app folder
-        $file = fopen(storage_path('app/information.csv'), 'r');
+        $file = fopen(storage_path('data/information.csv'), 'r');
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Tower::query()->truncate();

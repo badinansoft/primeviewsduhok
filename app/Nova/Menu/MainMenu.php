@@ -9,11 +9,13 @@ use App\Nova\Dashboards\Main;
 use App\Nova\Gas;
 use App\Nova\Lenses\PaidGasLens;
 use App\Nova\Lenses\PaidServiceLens;
+use App\Nova\Lenses\PaidWaterLens;
 use App\Nova\Lenses\TotalCollectByDate;
 use App\Nova\Level;
 use App\Nova\Service;
 use App\Nova\Tower;
 use App\Nova\User;
+use App\Nova\Water;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
 
@@ -38,6 +40,13 @@ class MainMenu
                 ->icon('fire'),
 
             MenuSection::lens(Gas::class, PaidGasLens::class)
+                ->icon('cash'),
+
+
+            MenuSection::resource(Water::class)
+                ->icon('globe'),
+
+            MenuSection::lens(Water::class, PaidWaterLens::class)
                 ->icon('cash'),
 
             MenuSection::resource(Apartment::class)

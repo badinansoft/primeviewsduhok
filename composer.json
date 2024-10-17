@@ -9,7 +9,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "badinansoft/bigcheckbox": "@dev",
         "bakerkretzmar/nova-settings-tool": "^2.0",
+        "codeat3/blade-maki-icons": "^1.8",
         "datomatic/nova-detached-actions": "^2.1",
         "datomatic/nova-enum-field": "^1.9",
         "davidhsianturi/blade-bootstrap-icons": "^1.5",
@@ -26,8 +28,7 @@
         "robsontenorio/mary": "^1.35",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-data": "^4.7",
-        "symfony/polyfill-intl-icu": "^1.30",
-        "badinansoft/bigcheckbox": "@dev"
+        "symfony/polyfill-intl-icu": "^1.30"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

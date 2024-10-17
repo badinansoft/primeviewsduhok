@@ -89,6 +89,11 @@ class Apartment extends Model
         return $this->hasMany(Service::class);
     }
 
+    public function waters(): HasMany
+    {
+        return $this->hasMany(Water::class);
+    }
+
     public function gas(): HasMany
     {
         return $this->hasMany(Gas::class);

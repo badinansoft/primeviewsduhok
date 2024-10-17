@@ -2,18 +2,18 @@
 
 namespace App\Actions;
 
-use App\Data\ServiceDataBulkCreating;
+use App\Data\WaterDataBulkCreating;
 use App\Models\Apartment;
-use App\Models\Service;
 use App\Models\User;
+use App\Models\Water;
 use Laravel\Nova\Notifications\NovaNotification;
 use Laravel\Nova\URL;
 
-class CreateServiceForAllApartment
+class CreateWaterForAllApartment
 {
     private User $user;
     public function __construct(
-        readonly ServiceDataBulkCreating $data,
+        readonly WaterDataBulkCreating $data,
     )
     {
         $this->user = User::find($this->data->createdBy);
@@ -45,7 +45,7 @@ class CreateServiceForAllApartment
             {
                 $this->user->notify(
                     NovaNotification::make()
-                        ->message("Service already exists for apartment {$apartment->title} in the given period")
+                        ->message("Water already exists for apartment {$apartment->title} in the given period")
                         ->action('View Apartment', URL::remote("/portal/resources/apartments/{$apartment->id}"))
                         ->icon('exclamation-triangle')
                         ->type('warning')
@@ -53,20 +53,20 @@ class CreateServiceForAllApartment
                 continue;
             }
 
-            $service = new Service();
-            $service->apartment_id = $apartment->id;
-            $service->amount = $this->data->amount;
-            $service->notes = $this->data->note;
-            $service->start_date = $this->data->startDate;
-            $service->end_date = $this->data->endDate;
-            $service->created_by = $this->data->createdBy;
-            $service->save();
+            $water = new Water();
+            $water->apartment_id = $apartment->id;
+            $water->amount = $this->data->amount;
+            $water->notes = $this->data->note;
+            $water->start_date = $this->data->startDate;
+            $water->end_date = $this->data->endDate;
+            $water->created_by = $this->data->createdBy;
+            $water->save();
         }
     }
 
     private function checkIfServiceExistsInPeriod(Apartment $apartment): bool
     {
-        return $apartment->services()->where('start_date', '<=', $this->data->startDate)
+        return $apartment->waters()->where('start_date', '<=', $this->data->startDate)
             ->where('end_date', '>=', $this->data->endDate)
             ->exists();
     }

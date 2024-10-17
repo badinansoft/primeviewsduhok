@@ -44,7 +44,8 @@ class ImportDataFromCSV extends Command
             $apartment = $tower->apartments()->firstOrCreate([
                 'number' => $row[2],
                 'level_id' => $level->id,
-                'view' => $row[3],
+                'view' => str_replace(' ', '', $row[3]),
+                'area' => $row[4],
             ]);
 
             // forth and fifth is customer name and phone

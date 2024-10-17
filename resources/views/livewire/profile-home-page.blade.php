@@ -92,6 +92,23 @@
 
         <x-list-item :item="$apartment" >
             <x-slot:avatar>
+                <x-maki-drinking-water class="w-12 h-12 bg-amber-800 text-white p-2 rounded-full" />
+            </x-slot:avatar>
+            <x-slot:value>
+                {{ number_format($apartment->waters()->count()) }} <b class="text-red-600"> مرات   </b>
+            </x-slot:value>
+            <x-slot:sub-value>
+                ماء
+            </x-slot:sub-value>
+
+            <x-slot:actions>
+                <x-button icon="o-queue-list" class="text-yellow-500" spinner :link="route('profile.water', $apartment->uuid)" />
+            </x-slot:actions>
+
+        </x-list-item>
+
+        <x-list-item :item="$apartment" >
+            <x-slot:avatar>
                 <x-icon name="c-fire" class="w-12 h-12 bg-amber-800 text-white p-2 rounded-full" />
             </x-slot:avatar>
             <x-slot:value>

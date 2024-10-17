@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b260bc293e2ab585df1c261238aacc1",
+    "content-hash": "f180a3320275cd363392879a638a0c17",
     "packages": [
         {
             "name": "amphp/amp",
@@ -921,7 +921,7 @@
         },
         {
             "name": "badinansoft/bigcheckbox",
-            "version": "dev-master",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Bigcheckbox",
@@ -1351,6 +1351,78 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "codeat3/blade-maki-icons",
+            "version": "1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeat3/blade-maki-icons.git",
+                "reference": "509a3f3f20e9a1abb97a8e9f03b70dac7256cb54"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeat3/blade-maki-icons/zipball/509a3f3f20e9a1abb97a8e9f03b70dac7256cb54",
+                "reference": "509a3f3f20e9a1abb97a8e9f03b70dac7256cb54",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "codeat3/blade-icon-generation-helpers": "^0.8",
+                "codeat3/phpcs-styles": "^1.0",
+                "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0",
+                "phpunit/phpunit": "^9.0|^10.5|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Codeat3\\BladeMakiIcons\\BladeMakiIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codeat3\\BladeMakiIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Swapnil Sarwe",
+                    "homepage": "https://swapnilsarwe.com"
+                },
+                {
+                    "name": "Dries Vints",
+                    "homepage": "https://driesvints.com"
+                }
+            ],
+            "description": "A package to easily make use of Maki Icons in your Laravel Blade views.",
+            "homepage": "https://github.com/codeat3/blade-maki-icons",
+            "keywords": [
+                "blade",
+                "icons",
+                "laravel",
+                "maki"
+            ],
+            "support": {
+                "issues": "https://github.com/codeat3/blade-maki-icons/issues",
+                "source": "https://github.com/codeat3/blade-maki-icons/tree/1.8.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/swapnilsarwe",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-02-29T17:21:37+00:00"
         },
         {
             "name": "dasprid/enum",

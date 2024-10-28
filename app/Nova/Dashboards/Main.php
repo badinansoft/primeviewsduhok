@@ -11,7 +11,9 @@ use App\Nova\Metrics\MonthlyPaidServiceAmount;
 use App\Nova\Metrics\MonthlyUnPaidGasAmount;
 use App\Nova\Metrics\MonthlyUnPaidServiceAmount;
 use App\Nova\Metrics\TotalPaidServiceAmount;
+use App\Nova\Metrics\TotalPaidWaterAmount;
 use App\Nova\Metrics\TotalUnPaidServiceAmount;
+use App\Nova\Metrics\TotalUnPaidWaterAmount;
 use Laravel\Nova\Dashboards\Main as Dashboard;
 
 class Main extends Dashboard
@@ -27,6 +29,8 @@ class Main extends Dashboard
             new MonthlyPaidGasAmount(),
             (new MonthlyUnPaidGasAmount()),
             (new MonthlyGasConsumptionUnit),
+            (new TotalPaidWaterAmount()),
+            (new TotalUnPaidWaterAmount()),
         ];
     }
 }

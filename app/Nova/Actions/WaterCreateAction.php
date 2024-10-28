@@ -14,8 +14,10 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\ActionResponse;
 use Laravel\Nova\Fields\ActionFields;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\FormData;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Textarea;
@@ -51,8 +53,10 @@ class WaterCreateAction extends DetachedAction
             ->select("area")
             ->groupBy("area")
             ->get()
+            ->sortBy('area')
             ->pluck("area", "area")
             ->toArray();
+
         $settings = app(Settings::class);
         return [
 
@@ -61,7 +65,21 @@ class WaterCreateAction extends DetachedAction
                 ->searchable()
                 ->rules('required'),
 
-            BooleanGroup::make(__('Area'), 'area')->options($area),
+            Boolean::make('Select All', 'all')
+                ->trueValue('selected')
+                ->falseValue('non'),
+
+            BooleanGroup::make(__('Area'), 'area')
+                ->options($area)
+                ->dependsOn('all', function (BooleanGroup $field, NovaRequest $request, FormData $formData) {
+                    $options = $field->options;
+                    $values = [];
+                    $defaultValues = $formData->get('all');
+                    foreach ($options as $value) {
+                        $values[$value['label']] = $defaultValues;
+                    }
+                    $field->default($values);
+                }),
 
             Date::make(__('Start Date'), 'start_date')
                 ->rules('required'),

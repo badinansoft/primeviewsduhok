@@ -132,6 +132,7 @@ class Apartment extends Resource
                 ->hideWhenUpdating(),
 
             HasMany::make(__('Services'), 'services', Service::class),
+            HasMany::make(__('Water'), 'waters', Water::class),
             HasMany::make(__('Gas'), 'gas', Gas::class),
         ];
     }

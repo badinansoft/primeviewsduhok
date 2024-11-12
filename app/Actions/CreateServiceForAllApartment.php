@@ -12,6 +12,7 @@ use Laravel\Nova\URL;
 class CreateServiceForAllApartment
 {
     private User $user;
+
     public function __construct(
         readonly ServiceDataBulkCreating $data,
     )

@@ -17,7 +17,7 @@ class MonthlyUnPaidServiceAmount extends Trend
 
     public function calculate(NovaRequest $request): TrendResult
     {
-        return $this->sumByMonths($request, Service::query()->whereNull('paid_at'), 'amount', 'created_at')
+        return $this->sumByMonths($request, Service::query()->whereNull('paid_at'), 'amount', 'start_date')
             ->showSumValue()
             ->prefix(' $ ')
             ->format([

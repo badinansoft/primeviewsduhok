@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Jobs\SendNotificationToCustomerViaWhatsAppJob;
 use App\Models\Gas;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -29,6 +30,15 @@ class PayGasAction
             $gas->apartment->save();
 
             DB::commit();
+
+            $message = "
+                     ✅ تم دفع فاتورتك الغاز بنجاح
+                    قيمة فاتورة الغاز: {$gas->total_price}  د.ع
+                    تاريخ الدفع: {$gas->paid_at->format('Y-m-d')}
+            ";
+
+            dispatch(new SendNotificationToCustomerViaWhatsAppJob($message, $gas->apartment));
+
             return true;
         } catch (Exception $e) {
             DB::rollBack();

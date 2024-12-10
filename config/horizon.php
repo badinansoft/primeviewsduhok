@@ -202,11 +202,27 @@ return [
                 'balanceMaxShift' => 1,
                 'balanceCooldown' => 3,
             ],
+            'slow-supervisor' => [
+                'connection' => 'redis',
+                'queue' => ['whatsapp'],
+                'balance' => 'auto',
+                'minProcesses' => 1,
+                'maxProcesses' => 1,
+                'retry' => 3,
+            ],
         ],
 
         'local' => [
             'supervisor-1' => [
                 'maxProcesses' => 3,
+            ],
+            'slow-supervisor' => [
+                'connection' => 'redis',
+                'queue' => ['whatsapp'],
+                'balance' => 'auto',
+                'minProcesses' => 1,
+                'maxProcesses' => 1,
+                'retry' => 3,
             ],
         ],
     ],

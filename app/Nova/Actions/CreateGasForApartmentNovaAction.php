@@ -2,6 +2,7 @@
 
 namespace App\Nova\Actions;
 
+use App\Jobs\SendInvoiceOverWhatsAppJob;
 use App\Models\Apartment;
 use App\Models\Gas;
 use App\Models\Service;
@@ -60,6 +61,9 @@ class CreateGasForApartmentNovaAction extends Action
         }
 
         $gas->save();
+
+        dispatch(new SendInvoiceOverWhatsAppJob($gas));
+
 
         if($fields->is_paid) {
             return Action::redirect(route('print.gas', $gas->id));

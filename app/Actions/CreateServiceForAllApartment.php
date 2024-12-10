@@ -3,6 +3,7 @@
 namespace App\Actions;
 
 use App\Data\ServiceDataBulkCreating;
+use App\Jobs\SendInvoiceOverWhatsAppJob;
 use App\Models\Apartment;
 use App\Models\Service;
 use App\Models\User;
@@ -62,6 +63,7 @@ class CreateServiceForAllApartment
             $service->end_date = $this->data->endDate;
             $service->created_by = $this->data->createdBy;
             $service->save();
+            dispatch(new SendInvoiceOverWhatsAppJob($service));
         }
     }
 

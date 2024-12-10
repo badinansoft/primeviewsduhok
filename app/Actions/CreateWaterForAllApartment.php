@@ -3,6 +3,7 @@
 namespace App\Actions;
 
 use App\Data\WaterDataBulkCreating;
+use App\Jobs\SendInvoiceOverWhatsAppJob;
 use App\Models\Apartment;
 use App\Models\User;
 use App\Models\Water;
@@ -61,6 +62,7 @@ class CreateWaterForAllApartment
             $water->end_date = $this->data->endDate;
             $water->created_by = $this->data->createdBy;
             $water->save();
+            dispatch(new SendInvoiceOverWhatsAppJob($water));
         }
     }
 

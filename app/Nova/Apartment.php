@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Enums\ApartmentView;
 use App\Enums\UserRoles;
+use App\Nova\Actions\SendNotificationToCustomer;
 use App\Nova\Filters\ApartmentLevelFilter;
 use App\Nova\Filters\ApartmentNumberFilter;
 use App\Nova\Filters\ApartmentTowerFilter;
@@ -167,6 +168,10 @@ class Apartment extends Resource
                 ->onlyOnDetail()
                 ->showAsButton(true)
                 ->onlyInline(),
+
+            SendNotificationToCustomer::make()
+                ->canSee(fn() => $request->user()->role === UserRoles::ADMIN)
+                ->canRun(fn() => true),
         ];
     }
 

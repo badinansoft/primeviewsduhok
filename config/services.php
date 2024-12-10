@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'wa_api' => [
+        'api_token' => env('WAAPI_TOKEN', 'cnO9sE9Y0nYLMqKIXxztapsHfVCgMFiWK39Gi5HV6e4501f2'),
+        'api_url' => env('WAAPI_URL', 'https://waapi.app/api/v1'),
+        'api_instance_id' => env('WAAPI_INSTANCE_ID', '31383'),
+    ],
+
 ];

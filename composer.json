@@ -20,6 +20,7 @@
         "laravel/nova": "^4.0",
         "laravel/pulse": "^1.2",
         "laravel/tinker": "^2.9",
+        "league/flysystem-aws-s3-v3": "^3.29",
         "lednerb/nova-action-button-selectors": "^2.0",
         "livewire/livewire": "^3.5",
         "livewire/volt": "^1.6",
@@ -28,6 +29,7 @@
         "robsontenorio/mary": "^1.35",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-data": "^4.7",
+        "spatie/laravel-pdf": "^1.5",
         "symfony/polyfill-intl-icu": "^1.30"
     },
     "require-dev": {

@@ -3,6 +3,8 @@
 namespace App\Actions;
 
 use App\Data\ServiceDataBulkCreating;
+use App\Jobs\SendInvoiceOverWhatsAppJob;
+use App\Jobs\SendNotificationToCustomerViaWhatsAppJob;
 use App\Models\Apartment;
 use App\Models\Service;
 
@@ -18,5 +20,7 @@ class CreateSingleApartmentServiceAction
         $service->end_date = $data->endDate;
         $service->created_by = $data->createdBy;
         $service->save();
+
+        dispatch(new SendInvoiceOverWhatsAppJob($service));
     }
 }

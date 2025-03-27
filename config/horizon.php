@@ -204,7 +204,7 @@ return [
             ],
             'slow-supervisor' => [
                 'connection' => 'redis',
-                'queue' => ['whatsapp'],
+                'queue' => [],
                 'balance' => 'auto',
                 'minProcesses' => 1,
                 'maxProcesses' => 1,
